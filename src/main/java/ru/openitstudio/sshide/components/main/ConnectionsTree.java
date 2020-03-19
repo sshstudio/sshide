@@ -3,10 +3,7 @@ package ru.openitstudio.sshide.components.main;
 import ru.openitstudio.sshide.components.newsession.*;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 import java.util.UUID;
 
 public class ConnectionsTree extends JPanel {
@@ -16,7 +13,7 @@ public class ConnectionsTree extends JPanel {
     private DefaultMutableTreeNode rootNode;
     private String lastSelected;
 
-    ConnectionsTree() {
+    public ConnectionsTree() {
         init();
     }
 
@@ -33,6 +30,16 @@ public class ConnectionsTree extends JPanel {
         // tree.setDragEnabled(true);
 
         tree.setEditable(false);
+
+
+        DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) tree.getCellRenderer();
+        Icon closedIcon = new ImageIcon(getClass().getResource("/icons/server-group.png"));
+        Icon openIcon = new ImageIcon(getClass().getResource("/icons/server-group.png"));
+        Icon leafIcon = new ImageIcon(getClass().getResource("/icons/server.png"));
+        renderer.setClosedIcon(closedIcon);
+        renderer.setOpenIcon(openIcon);
+        renderer.setLeafIcon(leafIcon);
+
 
         loadTree(SessionStore.load());
 
