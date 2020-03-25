@@ -41,6 +41,7 @@ public class App {
 	public static UIDefaults splitPaneSkin2 = new UIDefaults();
 	private static Properties config = new Properties();
 	private static Font fontAwesomeFont;
+	private static Font fontMono;
 	private static Settings settings;
 
 	private static List<SnippetItem> snippetItems;
@@ -53,8 +54,26 @@ public class App {
 		return fontAwesomeFont;
 	}
 
+	public static Font getFontMono() {
+		return fontMono;
+	}
+
 	public static Settings getGlobalSettings() {
 		return settings;
+	}
+
+	private static void setUIFont(javax.swing.plaf.FontUIResource f)
+	{
+		java.util.Enumeration<Object> keys = UIManager.getDefaults().keys();
+		while (keys.hasMoreElements())
+		{
+			Object key = keys.nextElement();
+			Object value = UIManager.get(key);
+			if (value instanceof javax.swing.plaf.FontUIResource)
+			{
+				UIManager.put(key, f);
+			}
+		}
 	}
 
 //    class MySynthFactory extends SynthStyleFactory {
@@ -65,8 +84,7 @@ public class App {
 //        }
 //    }
 
-	public static void main(String[] args)
-			throws UnsupportedLookAndFeelException {
+	public static void main(String[] args) throws UnsupportedLookAndFeelException {
 
 		Security.addProvider(new BouncyCastleProvider());
 		Security.addProvider(new EdDSASecurityProvider());
@@ -432,6 +450,7 @@ public class App {
 		JMenuBar menu = (new MenuBar(f)).create();
 		f.setJMenuBar(menu);
 
+		setUIFont (new javax.swing.plaf.FontUIResource(getFontMono()));
 
 
 //        testDraw();
@@ -582,14 +601,23 @@ public class App {
 	}
 
 	public static void loadFonts() {
-		try (InputStream is = App.class
-				.getResourceAsStream("/fontawesome-webfont.ttf")) {
+		try (InputStream is = App.class.getResourceAsStream("/fontawesome-webfont.ttf")) {
 			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 			fontAwesomeFont = font.deriveFont(Font.PLAIN, 14f);
 			System.out.println("Font loaded");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		try (InputStream is = App.class.getResourceAsStream("/JetBrainsMonoRegular.ttf")) {
+			System.out.println(is);
+			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+			fontMono = font.deriveFont(Font.PLAIN, 14f);
+			System.out.println("Font loaded");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 //    static void testDraw() {
