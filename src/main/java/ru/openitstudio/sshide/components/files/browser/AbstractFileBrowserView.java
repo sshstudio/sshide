@@ -8,6 +8,7 @@ import ru.openitstudio.sshide.components.files.DndTransferData;
 import ru.openitstudio.sshide.components.files.FileComponentHolder;
 import ru.openitstudio.sshide.components.files.browser.folderview.FolderView;
 import ru.openitstudio.sshide.components.files.browser.folderview.FolderViewEventListener;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.LayoutUtils;
 import ru.openitstudio.sshide.utils.PathUtils;
 
@@ -71,7 +72,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         btnBack = new JButton();
         btnBack.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
         btnBack.setForeground(Color.DARK_GRAY);
-        btnBack.setFont(App.getFontAwesomeFont());
+        btnBack.setFont(FontUtils.getFontAwesomeFont());
         btnBack.setText("\uf060");
         btnBack.addActionListener(e -> {
             String item = history.prevElement();
@@ -83,7 +84,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         btnNext = new JButton();
         btnNext.setForeground(Color.DARK_GRAY);
         btnNext.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnNext.setFont(App.getFontAwesomeFont());
+        btnNext.setFont(FontUtils.getFontAwesomeFont());
         btnNext.setText("\uf061");
         btnNext.addActionListener(e -> {
             String item = history.nextElement();
@@ -95,7 +96,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         JButton btnHome = new JButton();
         btnHome.setForeground(Color.DARK_GRAY);
         btnHome.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnHome.setFont(App.getFontAwesomeFont());
+        btnHome.setFont(FontUtils.getFontAwesomeFont());
         btnHome.setText("\uf015");
         btnHome.addActionListener(e -> {
                     addBack(this.path);
@@ -108,7 +109,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         btnUp.setForeground(Color.DARK_GRAY);
         btnUp.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
         btnUp.addActionListener(upAction);
-        btnUp.setFont(App.getFontAwesomeFont());
+        btnUp.setFont(FontUtils.getFontAwesomeFont());
         btnUp.setText("\uf062");
 
 
@@ -118,7 +119,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         btnReload.setForeground(Color.DARK_GRAY);
         btnReload.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
         btnReload.addActionListener(reloadAction);
-        btnReload.setFont(App.getFontAwesomeFont());
+        btnReload.setFont(FontUtils.getFontAwesomeFont());
         btnReload.setText("\uf021");
 
 //        JButton btnSort = new JButton();
@@ -138,7 +139,7 @@ public abstract class AbstractFileBrowserView extends JPanel implements FolderVi
         JButton btnMore = new JButton();
         btnMore.setForeground(Color.DARK_GRAY);
         btnMore.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnMore.setFont(App.getFontAwesomeFont());
+        btnMore.setFont(FontUtils.getFontAwesomeFont());
         btnMore.setText("\uf142");
         btnMore.addActionListener(e -> {
             JPopupMenu popupMenu = overflowMenuHandler.getOverflowMenu();

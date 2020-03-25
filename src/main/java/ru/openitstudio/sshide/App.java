@@ -1,9 +1,6 @@
 package ru.openitstudio.sshide;
 
 import com.apple.eawt.Application;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.i2p.crypto.eddsa.EdDSASecurityProvider;
 
@@ -11,22 +8,19 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import ru.openitstudio.sshide.common.Settings;
 import ru.openitstudio.sshide.components.common.CustomScrollBarUI;
 import ru.openitstudio.sshide.components.main.MainContent;
-import ru.openitstudio.sshide.components.main.MainContentWithTree;
 import ru.openitstudio.sshide.components.menu.MenuBar;
-import ru.openitstudio.sshide.components.newsession.NewSessionDlg;
 import ru.openitstudio.sshide.components.terminal.snippets.SnippetItem;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 import ru.openitstudio.sshide.utils.PathUtils;
+import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.security.Security;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -40,22 +34,12 @@ public class App {
 	public static UIDefaults splitPaneSkin1 = new UIDefaults();
 	public static UIDefaults splitPaneSkin2 = new UIDefaults();
 	private static Properties config = new Properties();
-	private static Font fontAwesomeFont;
-	private static Font fontMono;
-	private static Settings settings;
+	public static Settings settings;
 
-	private static List<SnippetItem> snippetItems;
+	public static List<SnippetItem> snippetItems;
 
 	public static String getConfig(String key) {
 		return config.getProperty(key);
-	}
-
-	public static Font getFontAwesomeFont() {
-		return fontAwesomeFont;
-	}
-
-	public static Font getFontMono() {
-		return fontMono;
 	}
 
 	public static Settings getGlobalSettings() {
@@ -406,11 +390,11 @@ public class App {
 		new File(config.get("app.dir").toString()).mkdirs();
 		new File(config.get("temp.dir").toString()).mkdirs();
 
-		loadFonts();
+		FontUtils.loadFonts();
 
-		loadSettings();
+		SaveAndLoad.loadSettings();
 
-		loadSnippets();
+		SaveAndLoad.loadSnippets();
 
 
 
@@ -418,7 +402,7 @@ public class App {
 			try {
 
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
-				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WikiTeX");
+				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SshIde");
 
 				Application.getApplication().setDockIconImage(
 						ImageIO.read(App.class.getResource("/logo-512.png"))
@@ -450,7 +434,7 @@ public class App {
 		JMenuBar menu = (new MenuBar(f)).create();
 		f.setJMenuBar(menu);
 
-		setUIFont (new javax.swing.plaf.FontUIResource(getFontMono()));
+		setUIFont (new javax.swing.plaf.FontUIResource(FontUtils.getFontMono()));
 
 
 //        testDraw();
@@ -595,32 +579,12 @@ public class App {
 		btn.setMargin(new Insets(0, 0, 0, 0));
 		btn.setBorderPainted(false);
 		btn.setContentAreaFilled(false);
-		btn.setFont(getFontAwesomeFont());
+		btn.setFont(FontUtils.getFontAwesomeFont());
 		btn.setText(text);
 		return btn;
 	}
 
-	public static void loadFonts() {
-		try (InputStream is = App.class.getResourceAsStream("/fontawesome-webfont.ttf")) {
-			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-			fontAwesomeFont = font.deriveFont(Font.PLAIN, 14f);
-			System.out.println("Font loaded");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		try (InputStream is = App.class.getResourceAsStream("/JetBrainsMonoRegular.ttf")) {
-			System.out.println(is);
-			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-			fontMono = font.deriveFont(Font.PLAIN, 14f);
-			System.out.println("Font loaded");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-//    static void testDraw() {
+	//    static void testDraw() {
 //        JComponent component = new JComponent() {
 //            BufferedImage bufferedImage;
 //
@@ -654,66 +618,6 @@ public class App {
 //        f.add(component);
 //        f.setVisible(true);
 //    }
-
-	public synchronized static void loadSettings() {
-		File file = new File(App.getConfig("app.dir"),
-				AppConstants.CONFIG_DB_FILE);
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(
-				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		if (file.exists()) {
-			try {
-				settings = objectMapper.readValue(file,
-						new TypeReference<Settings>() {
-						});
-				return;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		settings = new Settings();
-	}
-
-	public synchronized static void saveSettings() {
-		File file = new File(App.getConfig("app.dir"),
-				AppConstants.CONFIG_DB_FILE);
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			objectMapper.writeValue(file, settings);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public synchronized static void loadSnippets() {
-		File file = new File(App.getConfig("app.dir"),
-				AppConstants.SNIPPETS_FILE);
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(
-				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		if (file.exists()) {
-			try {
-				snippetItems = objectMapper.readValue(file,
-						new TypeReference<List<SnippetItem>>() {
-						});
-				return;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		snippetItems = new ArrayList<>();
-	}
-
-	public synchronized static void saveSnippets() {
-		File file = new File(App.getConfig("app.dir"),
-				AppConstants.SNIPPETS_FILE);
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			objectMapper.writeValue(file, snippetItems);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public static List<SnippetItem> getSnippetItems() {
 		return snippetItems;

@@ -5,6 +5,7 @@ import com.jcraft.jsch.UserInfo;
 import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.components.newsession.SessionInfo;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
+import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -115,7 +116,7 @@ public abstract class AbstractUserInteraction
 			if (chkHideWarn.isSelected()) {
 				suppressMessage.set(true);
 				App.getGlobalSettings().setShowMessagePrompt(false);
-				App.saveSettings();
+				SaveAndLoad.saveSettings();
 			}
 		}
 	}

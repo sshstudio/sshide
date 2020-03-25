@@ -2,6 +2,7 @@ package ru.openitstudio.sshide.components.files.transfer;
 
 import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.FileSystem;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -87,7 +88,7 @@ public class BackgroundTransferPanel extends JPanel implements AutoCloseable {
             progressBar = new JProgressBar();
             progressLabel = new JLabel("Connecting...");
             JLabel removeLabel = new JLabel();
-            removeLabel.setFont(App.getFontAwesomeFont());
+            removeLabel.setFont(FontUtils.getFontAwesomeFont());
             removeLabel.setText("\uf00d");
 
             removeLabel.addMouseListener(new MouseAdapter() {

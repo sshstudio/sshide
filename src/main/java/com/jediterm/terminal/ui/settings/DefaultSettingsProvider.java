@@ -6,7 +6,7 @@ import com.jediterm.terminal.TextStyle;
 import com.jediterm.terminal.emulator.ColorPalette;
 import com.jediterm.terminal.model.LinesBuffer;
 import com.jediterm.terminal.ui.UIUtil;
-import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -89,7 +89,7 @@ public class DefaultSettingsProvider implements SettingsProvider {
 
   @Override
   public Font getTerminalFont() {
-    return App.getFontMono();
+    return FontUtils.getFontMono();
   }
 
   @Override

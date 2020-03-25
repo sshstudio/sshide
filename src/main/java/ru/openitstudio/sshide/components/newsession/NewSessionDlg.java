@@ -14,8 +14,6 @@ import ru.openitstudio.sshide.utils.*;
 import java.awt.*;
 import java.util.UUID;
 
-import static ru.openitstudio.sshide.App.getFontMono;
-
 public class NewSessionDlg extends JDialog implements ActionListener, TreeSelectionListener, TreeModelListener {
 
 	private static final long serialVersionUID = -1182844921331289546L;

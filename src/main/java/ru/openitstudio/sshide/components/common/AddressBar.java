@@ -1,6 +1,7 @@
 package ru.openitstudio.sshide.components.common;
 
 import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.LayoutUtils;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class AddressBar extends JPanel {
         this.separator = separator;
         JButton btnRoot = new JButton();
         btnRoot.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnRoot.setFont(App.getFontAwesomeFont());
+        btnRoot.setFont(FontUtils.getFontAwesomeFont());
         btnRoot.setForeground(Color.DARK_GRAY);
         btnRoot.setText("\uf0a0");
         btnRoot.addActionListener(e -> {
@@ -78,7 +79,7 @@ public class AddressBar extends JPanel {
 
         btnEdit = new JButton();
         btnEdit.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnEdit.setFont(App.getFontAwesomeFont());
+        btnEdit.setFont(FontUtils.getFontAwesomeFont());
         btnEdit.setForeground(Color.DARK_GRAY);
         btnEdit.setText("\uf023");
         //btnEdit.setBorder(new EmptyBorder(0,5,0,5));

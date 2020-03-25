@@ -125,10 +125,10 @@
 
 package ru.openitstudio.sshide.components.main;
 
-import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.components.newsession.NewSessionDlg;
 import ru.openitstudio.sshide.components.newsession.SessionInfo;
 import ru.openitstudio.sshide.components.settings.SettingsPanel;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 
 import javax.swing.*;
@@ -276,7 +276,7 @@ public class MainContent extends JPanel {
         Dimension maxDim = new Dimension(0, 0);
 
         JButton disconnect = GraphicsUtils.createSkinnedButton(c1, c2, c3);//new JButton("Disconnect");
-        disconnect.setFont(App.getFontAwesomeFont());
+        disconnect.setFont(FontUtils.getFontAwesomeFont());
         disconnect.setToolTipText("Disconnect session");
         //disconnect.setText("Disconnect");
         disconnect.setText("\uf052");
@@ -318,7 +318,7 @@ public class MainContent extends JPanel {
 
         JButton info = GraphicsUtils.createSkinnedButton(c1, c2, c3);//new JButton("Disconnect");
         info.setToolTipText("Help and about");
-        info.setFont(App.getFontAwesomeFont());
+        info.setFont(FontUtils.getFontAwesomeFont());
         //settings.setText("Settings");
         info.setText("\uf05a");
         //disconnect.setBackground(new Color(100, 0, 0));
