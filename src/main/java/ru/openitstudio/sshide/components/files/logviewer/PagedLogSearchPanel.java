@@ -2,6 +2,7 @@ package ru.openitstudio.sshide.components.files.logviewer;
 
 //import com.google.common.primitives.Longs;
 import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 
 import javax.swing.*;
@@ -26,7 +27,7 @@ public class PagedLogSearchPanel extends JPanel {
 
 		JButton btnSearch = new JButton();
 		btnSearch.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-		btnSearch.setFont(App.getFontAwesomeFont());
+		btnSearch.setFont(FontUtils.getFontAwesomeFont());
 		btnSearch.setText("\uf002");
 		btnSearch.addActionListener(e -> {
 			this.index = 0;
@@ -42,7 +43,7 @@ public class PagedLogSearchPanel extends JPanel {
 
 		JButton btnNext = new JButton();
 		btnNext.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-		btnNext.setFont(App.getFontAwesomeFont());
+		btnNext.setFont(FontUtils.getFontAwesomeFont());
 		btnNext.setText("\uf107");
 		btnNext.addActionListener(e -> {
 			if (raf == null || this.resultCount < 1)
@@ -62,7 +63,7 @@ public class PagedLogSearchPanel extends JPanel {
 
 		JButton btnPrev = new JButton();
 		btnPrev.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-		btnPrev.setFont(App.getFontAwesomeFont());
+		btnPrev.setFont(FontUtils.getFontAwesomeFont());
 		btnPrev.setText("\uf106");
 		btnPrev.addActionListener(e -> {
 			if (raf == null || this.resultCount < 1)

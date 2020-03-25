@@ -1,6 +1,6 @@
 package ru.openitstudio.sshide.components.common;
 
-import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -32,7 +32,7 @@ public class VerticalTabbedPanel extends JPanel {
         cardPanel.add(body, body.hashCode() + "");
         JLabel titleLabel = new JLabel(title);
         titleLabel.setBorder(new EmptyBorder(10,10,10,10));
-        titleLabel.setFont(App.getFontAwesomeFont().deriveFont(Font.PLAIN,20.0f));
+        titleLabel.setFont(FontUtils.getFontAwesomeFont().deriveFont(Font.PLAIN,20.0f));
         titleLabel.setBackground(selectionColor);
         titleLabel.setName(body.hashCode() + "");
         titleLabel.setAlignmentX(Box.LEFT_ALIGNMENT);

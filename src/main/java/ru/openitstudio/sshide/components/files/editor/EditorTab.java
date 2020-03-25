@@ -7,8 +7,8 @@ import org.fife.rsta.ui.search.SearchListener;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 import org.fife.ui.rtextarea.*;
-import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.FileInfo;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -63,7 +63,7 @@ public class EditorTab extends JPanel implements SearchListener {
 		replaceToolBar.add(this.toolbar);
 
 		JButton closeToolbar = new JButton();
-		closeToolbar.setFont(App.getFontAwesomeFont());
+		closeToolbar.setFont(FontUtils.getFontAwesomeFont());
 		closeToolbar.setText("\uf00d");
 		closeToolbar.addActionListener(e -> {
 			this.remove(replaceToolBar);

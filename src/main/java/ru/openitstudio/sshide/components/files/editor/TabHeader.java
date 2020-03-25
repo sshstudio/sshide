@@ -1,6 +1,6 @@
 package ru.openitstudio.sshide.components.files.editor;
 
-import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,7 +16,7 @@ public class TabHeader extends JPanel {
         lblTitle.setBorder(new EmptyBorder(5, 5, 5, 5));
         add(lblTitle);
         btnClose = new JLabel();
-        btnClose.setFont(App.getFontAwesomeFont());
+        btnClose.setFont(FontUtils.getFontAwesomeFont());
         btnClose.setText("\uf00d");
         add(btnClose, BorderLayout.EAST);
     }

@@ -1,6 +1,6 @@
 package ru.openitstudio.sshide.components.files.search;
 
-import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
@@ -20,7 +20,7 @@ public class SearchTableRenderer implements TableCellRenderer {
         this.panel = new JPanel(new BorderLayout(5, 5));
         this.textLabel = new JLabel();
         this.iconLabel = new JLabel();
-        this.iconLabel.setFont(App.getFontAwesomeFont().deriveFont(Font.PLAIN, 20));
+        this.iconLabel.setFont(FontUtils.getFontAwesomeFont().deriveFont(Font.PLAIN, 20));
         panel.add(iconLabel, BorderLayout.WEST);
         panel.add(textLabel);
     }

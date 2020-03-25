@@ -1,8 +1,8 @@
 package ru.openitstudio.sshide.components.settings;
 
-import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.Settings;
 import ru.openitstudio.sshide.common.SnowFlakePanel;
+import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -156,7 +156,7 @@ public class SettingsPanel extends JPanel {
         JButton btnCancel = new JButton("Cancel");
         btnOK.addActionListener(e -> {
             applySettings();
-            App.saveSettings();
+            SaveAndLoad.saveSettings();
             dlg.setVisible(false);
         });
         btnCancel.addActionListener(e -> {

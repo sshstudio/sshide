@@ -1,6 +1,6 @@
 package ru.openitstudio.sshide.components.common;
 
-import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class DisabledPanel extends JPanel {
         setLayout(layout);
         btn.setContentAreaFilled(false);
         btn.setBorderPainted(false);
-        btn.setFont(App.getFontAwesomeFont().deriveFont(20.0f));
+        btn.setFont(FontUtils.getFontAwesomeFont().deriveFont(20.0f));
         btn.setForeground(Color.WHITE);
         btn.setText("\uf00d");
         btn.setAlignmentX(Box.CENTER_ALIGNMENT);

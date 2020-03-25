@@ -6,10 +6,7 @@ import org.tukaani.xz.XZInputStream;
 import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.ssh.SshClient;
 import ru.openitstudio.sshide.components.files.FileComponentHolder;
-import ru.openitstudio.sshide.utils.FormatUtils;
-import ru.openitstudio.sshide.utils.GraphicsUtils;
-import ru.openitstudio.sshide.utils.PathUtils;
-import ru.openitstudio.sshide.utils.SshCommandUtils;
+import ru.openitstudio.sshide.utils.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -73,7 +70,7 @@ public class LogPage extends JPanel {
         nextPage = new JButton();
         nextPage.setToolTipText("Next page");
         nextPage.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        nextPage.setFont(App.getFontAwesomeFont());
+        nextPage.setFont(FontUtils.getFontAwesomeFont());
         nextPage.setText("\uf063");
         nextPage.addActionListener(e -> {
             nextPage();
@@ -81,7 +78,7 @@ public class LogPage extends JPanel {
         prevPage = new JButton("");
         prevPage.setToolTipText("Previous page");
         prevPage.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        prevPage.setFont(App.getFontAwesomeFont());
+        prevPage.setFont(FontUtils.getFontAwesomeFont());
         prevPage.setText("\uf062");
         prevPage.addActionListener(e -> {
             previousPage();
@@ -100,7 +97,7 @@ public class LogPage extends JPanel {
         JButton btnReload = new JButton();
         btnReload.setToolTipText("Reload");
         btnReload.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnReload.setFont(App.getFontAwesomeFont());
+        btnReload.setFont(FontUtils.getFontAwesomeFont());
         btnReload.setText("\uf0e2");
         btnReload.addActionListener(e -> {
             try {
@@ -119,7 +116,7 @@ public class LogPage extends JPanel {
 
         JButton btnCopy = new JButton();
         btnCopy.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
-        btnCopy.setFont(App.getFontAwesomeFont());
+        btnCopy.setFont(FontUtils.getFontAwesomeFont());
         btnCopy.setToolTipText("Copy selected text");
         btnCopy.setText("\uf0c5");
         btnCopy.addActionListener(e -> {

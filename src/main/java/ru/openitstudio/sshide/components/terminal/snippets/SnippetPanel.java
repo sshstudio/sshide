@@ -1,7 +1,9 @@
 package ru.openitstudio.sshide.components.terminal.snippets;
 
 import ru.openitstudio.sshide.App;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
+import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -26,7 +28,7 @@ public class SnippetPanel extends JPanel {
         Box topBox = Box.createHorizontalBox();
         topBox.add(Box.createHorizontalStrut(10));
         JLabel lblSearch = new JLabel();
-        lblSearch.setFont(App.getFontAwesomeFont());
+        lblSearch.setFont(FontUtils.getFontAwesomeFont());
         lblSearch.setText("\uf002");
         topBox.add(lblSearch);
         topBox.add(Box.createHorizontalStrut(10));
@@ -70,7 +72,7 @@ public class SnippetPanel extends JPanel {
                     return;
                 }
                 App.getSnippetItems().add(new SnippetItem(txtName.getText(), txtCommand.getText()));
-                App.saveSnippets();
+                SaveAndLoad.saveSnippets();
             }
             callback2.accept(null);
         });
@@ -100,7 +102,7 @@ public class SnippetPanel extends JPanel {
                 }
                 snippetItem.setCommand(txtCommand.getText());
                 snippetItem.setName(txtName.getText());
-                App.saveSnippets();
+                SaveAndLoad.saveSnippets();
             }
             callback2.accept(null);
         });
@@ -114,7 +116,7 @@ public class SnippetPanel extends JPanel {
 
             SnippetItem snippetItem = listModel.get(index);
             App.getSnippetItems().remove(snippetItem);
-            App.saveSnippets();
+            SaveAndLoad.saveSnippets();
             loadSnippets();
             callback2.accept(null);
         });

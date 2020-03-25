@@ -1,8 +1,8 @@
 package ru.openitstudio.sshide.components.files.browser.folderview;
 
-import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.FileInfo;
 import ru.openitstudio.sshide.common.FileType;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.FormatUtils;
 
 import javax.swing.*;
@@ -29,7 +29,7 @@ public class FolderViewRenderer implements TableCellRenderer {
         plainFont = new Font(Font.DIALOG, Font.PLAIN, 14);
 
         iconLabel = new JLabel();
-        iconLabel.setFont(App.getFontAwesomeFont().deriveFont(Font.PLAIN, 25.f));
+        iconLabel.setFont(FontUtils.getFontAwesomeFont().deriveFont(Font.PLAIN, 25.f));
         iconLabel.setForeground(new Color(92, 167, 25));
         //iconLabel.setBorder(new EmptyBorder(5,5,5,5));
         iconLabel.setHorizontalAlignment(JLabel.CENTER);

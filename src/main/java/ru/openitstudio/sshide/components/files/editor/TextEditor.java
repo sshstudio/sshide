@@ -3,6 +3,7 @@ package ru.openitstudio.sshide.components.files.editor;
 import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.FileInfo;
 import ru.openitstudio.sshide.components.files.FileComponentHolder;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 import ru.openitstudio.sshide.utils.LayoutUtils;
 
@@ -65,7 +66,7 @@ public class TextEditor extends JPanel {
 				});
 			});
 		});
-		btnOpen.setFont(App.getFontAwesomeFont());
+		btnOpen.setFont(FontUtils.getFontAwesomeFont());
 		btnOpen.setText("\uf115");
 		btnOpen.setToolTipText("Open file");
 		btnOpen.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -74,7 +75,7 @@ public class TextEditor extends JPanel {
 		btnSave.addActionListener(e -> {
 			save();
 		});
-		btnSave.setFont(App.getFontAwesomeFont());
+		btnSave.setFont(FontUtils.getFontAwesomeFont());
 		btnSave.setText("\uf0c7");
 		btnSave.setToolTipText("Save");
 		btnSave.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -83,7 +84,7 @@ public class TextEditor extends JPanel {
 		btnReload.addActionListener(e -> {
 			reloadFile();
 		});
-		btnReload.setFont(App.getFontAwesomeFont());
+		btnReload.setFont(FontUtils.getFontAwesomeFont());
 		btnReload.setText("\uf021");
 		btnReload.setToolTipText("Reload");
 		btnReload.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -92,7 +93,7 @@ public class TextEditor extends JPanel {
 		btnFind.addActionListener(e -> {
 			findText();
 		});
-		btnFind.setFont(App.getFontAwesomeFont());
+		btnFind.setFont(FontUtils.getFontAwesomeFont());
 		btnFind.setText("\uf002");
 		btnFind.setToolTipText("Find and replace");
 		btnFind.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -101,7 +102,7 @@ public class TextEditor extends JPanel {
 		btnCut.addActionListener(e -> {
 			cutText();
 		});
-		btnCut.setFont(App.getFontAwesomeFont());
+		btnCut.setFont(FontUtils.getFontAwesomeFont());
 		btnCut.setText("\uf0c4");
 		btnCut.setToolTipText("Cut");
 		btnCut.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -110,7 +111,7 @@ public class TextEditor extends JPanel {
 		btnCopy.addActionListener(e -> {
 			copyText();
 		});
-		btnCopy.setFont(App.getFontAwesomeFont());
+		btnCopy.setFont(FontUtils.getFontAwesomeFont());
 		btnCopy.setText("\uf0c5");
 		btnCopy.setToolTipText("Copy");
 		btnCopy.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -119,7 +120,7 @@ public class TextEditor extends JPanel {
 		btnPaste.addActionListener(e -> {
 			pasteText();
 		});
-		btnPaste.setFont(App.getFontAwesomeFont());
+		btnPaste.setFont(FontUtils.getFontAwesomeFont());
 		btnPaste.setText("\uf0ea");
 		btnPaste.setToolTipText("Paste");
 		btnPaste.putClientProperty("Nimbus.Overrides", App.toolBarButtonSkin);
@@ -133,7 +134,7 @@ public class TextEditor extends JPanel {
 		btnGotoLine.addActionListener(e -> {
 			gotoLine();
 		});
-		btnGotoLine.setFont(App.getFontAwesomeFont());
+		btnGotoLine.setFont(FontUtils.getFontAwesomeFont());
 		btnGotoLine.setText("\uf0cb");
 		btnGotoLine.setToolTipText("Goto line");
 		btnGotoLine.putClientProperty("Nimbus.Overrides",

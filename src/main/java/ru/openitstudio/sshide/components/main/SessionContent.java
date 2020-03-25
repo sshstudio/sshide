@@ -13,6 +13,7 @@ import ru.openitstudio.sshide.components.newsession.SessionInfo;
 import ru.openitstudio.sshide.components.sysinfo.SystemInfoPanel;
 import ru.openitstudio.sshide.components.taskmgr.TaskManager;
 import ru.openitstudio.sshide.components.terminal.TerminalHolder;
+import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -97,7 +98,7 @@ public class SessionContent extends JPanel {
 		// JToolBar toolBar = new JToolBar();
 		JButton btn = new JButton();
 		btn.setMargin(new Insets(5, 5, 5, 5));
-		btn.setFont(App.getFontAwesomeFont());
+		btn.setFont(FontUtils.getFontAwesomeFont());
 		btn.setText("\uf120");
 		// toolBar.add(btn);
 		btn.addActionListener(e -> {
@@ -140,7 +141,7 @@ public class SessionContent extends JPanel {
 			// panel.setBackground(new Color(20, 23, 41));
 			JLabel iconLabel = new JLabel();
 			iconLabel.addMouseListener(adapter);
-			iconLabel.setFont(App.getFontAwesomeFont());
+			iconLabel.setFont(FontUtils.getFontAwesomeFont());
 			iconLabel.setForeground(Color.GRAY);
 			iconLabel.setText(snowFlakePanel.getIcon());
 			JLabel textLabel = new JLabel(snowFlakePanel.getName());

@@ -1,8 +1,8 @@
 package ru.openitstudio.sshide.components.files.browser.folderview;
 
-import ru.openitstudio.sshide.App;
 import ru.openitstudio.sshide.common.FileInfo;
 import ru.openitstudio.sshide.common.FileType;
+import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.FormatUtils;
 
 import javax.swing.*;
@@ -19,7 +19,7 @@ public class FolderViewListCellRenderer implements ListCellRenderer<FileInfo> {
         lblIcon = new JLabel();
         lblIcon.setBorder(new EmptyBorder(5, 5, 5, 5));
         lblIcon.setText("\uf1c6");
-        lblIcon.setFont(App.getFontAwesomeFont().deriveFont(Font.PLAIN, 25.f));
+        lblIcon.setFont(FontUtils.getFontAwesomeFont().deriveFont(Font.PLAIN, 25.f));
         lblIcon.setHorizontalAlignment(JLabel.CENTER);
         lblIcon.setVerticalAlignment(JLabel.CENTER);
         lblIcon.setForeground(Color.WHITE);
