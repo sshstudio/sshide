@@ -11,6 +11,9 @@ import java.util.Arrays;
 
 import ru.openitstudio.sshide.components.ui.JCheckBox;
 import ru.openitstudio.sshide.components.ui.JComboBox;
+import ru.openitstudio.sshide.components.ui.JLabel;
+import ru.openitstudio.sshide.components.ui.JButton;
+
 
 public class SettingsPanel extends JPanel {
     private JCheckBox chkConfirmBeforeDelete, chkConfirmBeforeMoveOrCopy, chkShowHiddenFilesByDefault,
