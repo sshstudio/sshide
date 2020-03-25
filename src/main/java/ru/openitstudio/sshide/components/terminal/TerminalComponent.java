@@ -18,6 +18,9 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+import ru.openitstudio.sshide.components.ui.JButton;
+import ru.openitstudio.sshide.components.ui.JLabel;
+
 public class TerminalComponent extends JPanel implements ConnectedResource {
 	private JRootPane rootPane;
 	private JPanel contentPane;
@@ -54,7 +57,9 @@ public class TerminalComponent extends JPanel implements ConnectedResource {
 		reconnectionBox = Box.createHorizontalBox();
 		reconnectionBox.setOpaque(true);
 		reconnectionBox.setBackground(Color.RED);
-		reconnectionBox.add(new JLabel("Session not connected"));
+		JLabel reconnectLabel = new JLabel("Session not connected");
+		reconnectLabel.setForeground(Color.WHITE);
+		reconnectionBox.add(reconnectLabel);
 		JButton btnReconnect = new JButton("Reconnect");
 		btnReconnect.addActionListener(e -> {
 			contentPane.remove(reconnectionBox);

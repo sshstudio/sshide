@@ -22,47 +22,6 @@ public class AppInfoDialog extends JDialog {
         JLabel lblVersion = new JLabel("v"+App.APP_VERSION_STR);
         JLabel lblAuthor = new JLabel("Fedor B Gorsky");
 
-        JButton btnVisitPage = new JButton("View in github");
-        JButton btnHelp = new JButton("Help and FAQ");
-        JButton btnCheckForUpdate = new JButton("Check for update");
-
-        btnVisitPage.addActionListener(e -> {
-            if (Desktop.isDesktopSupported()) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/subhra74/snowflake"));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (URISyntaxException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        btnHelp.addActionListener(e -> {
-            if (Desktop.isDesktopSupported()) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/subhra74/snowflake/wiki"));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (URISyntaxException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        btnCheckForUpdate.addActionListener(e -> {
-            if (Desktop.isDesktopSupported()) {
-                try {
-                    Desktop.getDesktop().browse(
-                            new URI("https://subhra74.github.io/snowflake/check-update.html?v=" + App.APP_VERSION));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (URISyntaxException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
         lblTitle.setAlignmentX(Box.CENTER_ALIGNMENT);
         lblVersion.setAlignmentX(Box.CENTER_ALIGNMENT);
         lblAuthor.setAlignmentX(Box.CENTER_ALIGNMENT);
@@ -75,9 +34,6 @@ public class AppInfoDialog extends JDialog {
         add(vbox);
 
         JPanel bottomPanel = new JPanel(new GridLayout(1, 3, 5, 5));
-        bottomPanel.add(btnVisitPage);
-        bottomPanel.add(btnHelp);
-        bottomPanel.add(btnCheckForUpdate);
         bottomPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         add(bottomPanel, BorderLayout.SOUTH);

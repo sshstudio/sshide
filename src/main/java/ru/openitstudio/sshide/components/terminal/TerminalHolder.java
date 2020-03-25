@@ -55,6 +55,7 @@ public class TerminalHolder extends JPanel
 
 		this.btnStopTerm = new JButton();
 		this.btnStopTerm.setText("Close");
+		btnStopTerm.setPreferredSize(new Dimension(70, 16));
 //        this.btnStopTerm.setFont(App.getFontAwesomeFont());
 //        this.btnStopTerm.setText("\uf0c8");
 		this.btnStopTerm.setMargin(new Insets(3, 3, 3, 3));
@@ -65,6 +66,8 @@ public class TerminalHolder extends JPanel
 		});
 
 		this.btnSnippets = new JButton();
+		btnSnippets.setPreferredSize(new Dimension(80, 16));
+
 		this.btnSnippets.setText("Snippets");
 //        this.btnStopTerm.setFont(App.getFontAwesomeFont());
 //        this.btnStopTerm.setText("\uf0c8");
