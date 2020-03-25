@@ -217,6 +217,7 @@ public class MainContent extends JPanel {
         topPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         JButton newConnection = GraphicsUtils.createSkinnedButton(new Color(92, 167, 25), new Color(128, 167, 25), new Color(50, 167, 25));// new JButton("New connection");
         newConnection.setText("New connection");
+        newConnection.setFont(FontUtils.getFontMono());
         //newConnection.setBackground(new Color(0, 105, 0));
         //newConnection.setFocusPainted(false);
         newConnection.setForeground(Color.WHITE);
