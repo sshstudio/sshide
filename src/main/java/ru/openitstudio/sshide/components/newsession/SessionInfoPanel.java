@@ -5,7 +5,7 @@ import ru.openitstudio.sshide.utils.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
-import ru.openitstudio.sshide.components.JLabel;
+import ru.openitstudio.sshide.components.ui.JLabel;
 
 public class SessionInfoPanel extends JPanel {
 

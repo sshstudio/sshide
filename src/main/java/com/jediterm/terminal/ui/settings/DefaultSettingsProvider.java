@@ -89,7 +89,7 @@ public class DefaultSettingsProvider implements SettingsProvider {
 
   @Override
   public Font getTerminalFont() {
-    return FontUtils.getFontMono();
+    return FontUtils.getFontForConsole();
   }
 
   @Override

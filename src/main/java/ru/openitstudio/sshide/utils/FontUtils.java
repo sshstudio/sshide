@@ -6,15 +6,20 @@ import java.awt.*;
 import java.io.InputStream;
 
 public class FontUtils {
-    public static Font fontMono;
+    public static Font fontForUi;
+    public static Font fontForConsole;
     private static Font fontAwesomeFont;
 
     public static Font getFontAwesomeFont() {
         return fontAwesomeFont;
     }
 
-    public static Font getFontMono() {
-        return fontMono;
+    public static Font getFontForUi() {
+        return fontForUi;
+    }
+
+    public static Font getFontForConsole() {
+        return fontForConsole;
     }
 
     public static void loadFonts() {
@@ -35,7 +40,16 @@ public class FontUtils {
         try (InputStream is = App.class.getResourceAsStream(monoFontFileName)) {
             System.out.println(is);
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-            fontMono = font.deriveFont(Font.PLAIN, 14f);
+            fontForUi = font.deriveFont(Font.PLAIN, 14f);
+            System.out.println("Font loaded");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try (InputStream is = App.class.getResourceAsStream("/Andale.ttf")) {
+            System.out.println(is);
+            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+            fontForConsole = font.deriveFont(Font.PLAIN, 14f);
             System.out.println("Font loaded");
         } catch (Exception e) {
             e.printStackTrace();

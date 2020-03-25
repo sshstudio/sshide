@@ -14,7 +14,7 @@ import ru.openitstudio.sshide.utils.*;
 import java.awt.*;
 import java.util.UUID;
 
-import ru.openitstudio.sshide.components.JButton;
+import ru.openitstudio.sshide.components.ui.JButton;
 
 public class NewSessionDlg extends JDialog implements ActionListener, TreeSelectionListener, TreeModelListener {
 

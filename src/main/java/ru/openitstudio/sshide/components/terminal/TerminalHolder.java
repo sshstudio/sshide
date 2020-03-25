@@ -14,6 +14,9 @@ import java.util.concurrent.*;
 
 import java.util.concurrent.atomic.*;
 
+import ru.openitstudio.sshide.components.ui.JButton;
+import ru.openitstudio.sshide.components.ui.JComboBox;
+
 public class TerminalHolder extends JPanel
 		implements AutoCloseable, LazyInitComponent {
 	private SessionInfo info;

@@ -434,7 +434,7 @@ public class App {
 		JMenuBar menu = (new MenuBar(f)).create();
 		f.setJMenuBar(menu);
 
-		setUIFont (new javax.swing.plaf.FontUIResource(FontUtils.getFontMono()));
+		setUIFont (new javax.swing.plaf.FontUIResource(FontUtils.getFontForUi()));
 
 
 //        testDraw();

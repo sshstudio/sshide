@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.function.Consumer;
+import ru.openitstudio.sshide.components.ui.JButton;
 
 public class RemoteKeyPanel extends JPanel {
     private SessionInfo info;

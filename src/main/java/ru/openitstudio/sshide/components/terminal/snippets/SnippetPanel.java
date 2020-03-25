@@ -14,6 +14,7 @@ import java.awt.datatransfer.StringSelection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import ru.openitstudio.sshide.components.ui.JButton;
 
 public class SnippetPanel extends JPanel {
     private DefaultListModel<SnippetItem> listModel = new DefaultListModel<>();

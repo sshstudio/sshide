@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Arrays;
 
+import ru.openitstudio.sshide.components.ui.JCheckBox;
+import ru.openitstudio.sshide.components.ui.JComboBox;
+
 public class SettingsPanel extends JPanel {
     private JCheckBox chkConfirmBeforeDelete, chkConfirmBeforeMoveOrCopy, chkShowHiddenFilesByDefault,
             chkPromptForSudo, chkDirectoryCache, chkShowPathBar,
