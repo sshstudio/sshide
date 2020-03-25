@@ -26,7 +26,13 @@ public class FontUtils {
             e.printStackTrace();
         }
 
-        try (InputStream is = App.class.getResourceAsStream("/JetBrainsMonoRegular.ttf")) {
+        String monoFontFileName = "/JetBrainsMonoRegular.ttf";
+
+        if (System.getProperty("os.name").equals("Mac OS X")) {
+            monoFontFileName = "/SFmono.ttf";
+        }
+
+        try (InputStream is = App.class.getResourceAsStream(monoFontFileName)) {
             System.out.println(is);
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
             fontMono = font.deriveFont(Font.PLAIN, 14f);
