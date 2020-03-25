@@ -108,11 +108,15 @@ public class NewSessionDlg extends JDialog implements ActionListener, TreeSelect
 		btnDup.putClientProperty("button.name", "btnDup");
 		// btnDup.setFont(Utility.getFont(Constants.SMALL));
 
-		btnConnect = new JButton("Connect");// new
+
+		btnConnect = GraphicsUtils.createSkinnedButton(new Color(92, 167, 25), new Color(128, 167, 25), new Color(50, 167, 25));// new JButton("New connection");
+		btnConnect.setText("Connect");
+		btnConnect.setForeground(Color.WHITE);
+//		btnConnect = new JButton("Connect");// new
 											// JButton(TextHolder.getString("session.connect"));
 		btnConnect.addActionListener(this);
 		btnConnect.putClientProperty("button.name", "btnConnect");
-		// btnConnect.setFont(Utility.getFont(Constants.SMALL));
+		 btnConnect.setPreferredSize(new Dimension(100, 34));
 
 		btnCancel = new JButton("Cancel");// new
 											// JButton(TextHolder.getString("session.cancel"));

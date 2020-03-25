@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import ru.openitstudio.sshide.components.ui.JButton;
+
 public class GraphicsUtils {
 	public static UIDefaults createSkinnedButton(UIDefaults btnSkin) {
 //        Color c1 = new Color(3, 155, 229);
