@@ -1,7 +1,7 @@
 package ru.openitstudio.sshide.components.settings;
 
 import ru.openitstudio.sshide.common.Settings;
-import ru.openitstudio.sshide.common.SnowFlakePanel;
+import ru.openitstudio.sshide.common.IdePanel;
 import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.swing.*;
@@ -85,7 +85,7 @@ public class SettingsPanel extends JPanel {
         cmbNumberOfSimultaneousConnection.setMaximumSize(new Dimension(cmbDefaultOpenAction.getPreferredSize().width * 2, cmbDefaultOpenAction.getPreferredSize().height));
         cmbTermType = new JComboBox<>(new String[]{"vt100", "xterm", "xterm-256color"});
         cmbTermType.setMaximumSize(new Dimension(cmbTermType.getPreferredSize().width * 2, cmbTermType.getPreferredSize().height));
-        cmbDefaultPanel = new JComboBox<>(Arrays.stream(SnowFlakePanel.values()).map(it -> it.getName()).toArray(String[]::new));
+        cmbDefaultPanel = new JComboBox<>(Arrays.stream(IdePanel.values()).map(it -> it.getName()).toArray(String[]::new));
         cmbDefaultPanel.setMaximumSize(new Dimension(cmbDefaultPanel.getPreferredSize().width * 2, cmbDefaultPanel.getPreferredSize().height));
 
 

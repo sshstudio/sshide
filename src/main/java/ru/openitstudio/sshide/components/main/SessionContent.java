@@ -1,7 +1,7 @@
 package ru.openitstudio.sshide.components.main;
 
 import ru.openitstudio.sshide.App;
-import ru.openitstudio.sshide.common.SnowFlakePanel;
+import ru.openitstudio.sshide.common.IdePanel;
 import ru.openitstudio.sshide.components.diskusage.DiskUsageAnalyzer;
 import ru.openitstudio.sshide.components.files.FileComponentHolder;
 import ru.openitstudio.sshide.components.files.editor.ExternalEditor;
@@ -105,22 +105,22 @@ public class SessionContent extends JPanel {
 			terminalHolder.createNewTerminal();
 		});
 
-		mainPanel.add(fileComponentHolder, SnowFlakePanel.FILES.getName());
-		mainPanel.add(terminalHolder, SnowFlakePanel.TERMINAL.getName());
+		mainPanel.add(fileComponentHolder, IdePanel.FILES.getName());
+		mainPanel.add(terminalHolder, IdePanel.TERMINAL.getName());
 //        mainPanel.add(fileSearchPanel, "Search");
-		mainPanel.add(taskManager, SnowFlakePanel.SYSTEM_MONITOR.getName());
+		mainPanel.add(taskManager, IdePanel.SYSTEM_MONITOR.getName());
 		mainPanel.add(diskUsageAnalyzer,
-				SnowFlakePanel.DISK_SPACE_ANALYZER.getName());
+				IdePanel.DISK_SPACE_ANALYZER.getName());
 		mainPanel.add(backgroundTransferPanel,
-				SnowFlakePanel.ACTIVE_TRANSFERS.getName());
-		mainPanel.add(systemInfoPanel, SnowFlakePanel.LINUX_TOOLS.getName());
-		mainPanel.add(keyManagerPanel, SnowFlakePanel.SSH_KEYS.getName());
+				IdePanel.ACTIVE_TRANSFERS.getName());
+		mainPanel.add(systemInfoPanel, IdePanel.LINUX_TOOLS.getName());
+		mainPanel.add(keyManagerPanel, IdePanel.SSH_KEYS.getName());
 		mainPanel.add(networkToolsPanel,
-				SnowFlakePanel.NETWORK_TOOLS.getName());
+				IdePanel.NETWORK_TOOLS.getName());
 
-		panels = new JPanel[SnowFlakePanel.values().length];
+		panels = new JPanel[IdePanel.values().length];
 		Dimension maxDim = null;
-		for (SnowFlakePanel snowFlakePanel : SnowFlakePanel.values()) {
+		for (IdePanel idePanel : IdePanel.values()) {
 			JPanel panel = new JPanel(new BorderLayout(10, 10));
 
 			MouseAdapter adapter = new MouseAdapter() {
@@ -130,12 +130,12 @@ public class SessionContent extends JPanel {
 				}
 			};
 
-			if (snowFlakePanel.getName()
-					.equals(SnowFlakePanel.ACTIVE_TRANSFERS.getName())) {
+			if (idePanel.getName()
+					.equals(IdePanel.ACTIVE_TRANSFERS.getName())) {
 				panel.add(lblProgressCount, BorderLayout.EAST);
 			}
 
-			panel.setName(snowFlakePanel.getName());
+			panel.setName(idePanel.getName());
 			panel.addMouseListener(adapter);
 			panel.setBackground(bg);
 			// panel.setBackground(new Color(20, 23, 41));
@@ -143,14 +143,14 @@ public class SessionContent extends JPanel {
 			iconLabel.addMouseListener(adapter);
 			iconLabel.setFont(FontUtils.getFontAwesomeFont());
 			iconLabel.setForeground(Color.GRAY);
-			iconLabel.setText(snowFlakePanel.getIcon());
-			JLabel textLabel = new JLabel(snowFlakePanel.getName());
+			iconLabel.setText(idePanel.getIcon());
+			JLabel textLabel = new JLabel(idePanel.getName());
 			textLabel.addMouseListener(adapter);
 			textLabel.setForeground(Color.GRAY);
 			panel.add(textLabel);
 			panel.add(iconLabel, BorderLayout.WEST);
 			panel.setBorder(new EmptyBorder(10, 15, 10, 15));
-			panels[snowFlakePanel.ordinal()] = panel;
+			panels[idePanel.ordinal()] = panel;
 
 			if (maxDim == null) {
 				maxDim = panel.getPreferredSize();
@@ -221,7 +221,7 @@ public class SessionContent extends JPanel {
 //
 		add(sidePanel, BorderLayout.WEST);
 
-		panelClicked(panels[SnowFlakePanel
+		panelClicked(panels[IdePanel
 				.fromName(App.getGlobalSettings().getDefaultPanel())
 				.ordinal()]);
 	}
@@ -248,10 +248,10 @@ public class SessionContent extends JPanel {
 					child.setForeground(Color.WHITE);
 				}
 
-				if (panel.getName().equals(SnowFlakePanel.TERMINAL.getName())) {
+				if (panel.getName().equals(IdePanel.TERMINAL.getName())) {
 					this.terminalHolder.lazyInit();
 				} else if (panel.getName()
-						.equals(SnowFlakePanel.FILES.getName())) {
+						.equals(IdePanel.FILES.getName())) {
 					this.fileComponentHolder.lazyInit();
 				}
 
@@ -279,7 +279,7 @@ public class SessionContent extends JPanel {
 	}
 
 	public void showPage(String pageName) {
-		JPanel panel = panels[SnowFlakePanel.fromName(pageName).ordinal()];
+		JPanel panel = panels[IdePanel.fromName(pageName).ordinal()];
 		panelClicked(panel);
 	}
 }

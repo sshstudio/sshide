@@ -447,7 +447,7 @@ public class NewSessionDlg extends JDialog implements ActionListener, TreeSelect
 				parentNode = (DefaultMutableTreeNode) parentNode.getParent();
 			}
 			JComboBox<String> cmbImports = new JComboBox<>(
-					new String[] { "Putty", "WinSCP", "Snowflake session store" });
+					new String[] { "Putty", "WinSCP", "sshide session store" });
 
 			if (JOptionPane.showOptionDialog(this, new Object[] { "Import from", cmbImports }, "Import sessions",
 					JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null,

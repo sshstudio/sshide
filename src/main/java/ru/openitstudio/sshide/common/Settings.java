@@ -18,7 +18,7 @@ public class Settings {
 	// 2 Open with internal editor
 			, numberOfSimultaneousConnection = 3;
 	private String terminalType = "xterm-256color";
-	private String defaultPanel = SnowFlakePanel.FILES.getName();
+	private String defaultPanel = IdePanel.FILES.getName();
 
 	public boolean isConfirmBeforeDelete() {
 		return confirmBeforeDelete;
