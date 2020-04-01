@@ -128,10 +128,12 @@ package ru.openitstudio.sshide.components.main;
 import ru.openitstudio.sshide.components.newsession.NewSessionDlg;
 import ru.openitstudio.sshide.components.newsession.SessionInfo;
 import ru.openitstudio.sshide.components.settings.SettingsPanel;
+import ru.openitstudio.sshide.components.ui.Colors;
 import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
@@ -158,7 +160,7 @@ public class MainContent extends JPanel {
         Painter<JComboBox> comboBoxPainterNormal = new Painter<JComboBox>() {
             @Override
             public void paint(Graphics2D g, JComboBox object, int width, int height) {
-                g.setColor(new Color(62, 68, 81));//g.setColor(new Color(62,68,81));
+                g.setColor(new Color(3, 155, 229));//g.setColor(new Color(62,68,81));
                 g.fillRect(0, 0, width - 1, height - 1);
             }
         };
@@ -166,7 +168,7 @@ public class MainContent extends JPanel {
         Painter<JComboBox> comboBoxPainterHot = new Painter<JComboBox>() {
             @Override
             public void paint(Graphics2D g, JComboBox object, int width, int height) {
-                g.setColor(new Color(90, 90, 90));
+                g.setColor(new Color(3, 155, 229));
                 g.fillRect(0, 0, width - 1, height - 1);
             }
         };
@@ -174,7 +176,7 @@ public class MainContent extends JPanel {
         Painter<JComboBox> comboBoxPainterPressed = new Painter<JComboBox>() {
             @Override
             public void paint(Graphics2D g, JComboBox object, int width, int height) {
-                g.setColor(new Color(50, 50, 50));
+                g.setColor(new Color(3, 155, 229));
                 g.fillRect(0, 0, width - 1, height - 1);
             }
         };
@@ -196,7 +198,7 @@ public class MainContent extends JPanel {
 
 
     private void init() {
-        setBackground(new Color(245, 245, 245));
+        setBackground(Colors.MAIN_BG);
         this.settingsPanel = new SettingsPanel(frame);
         SessionContentPanel contentPanel = new SessionContentPanel();
         //setBackground(new Color(80,80,80));
@@ -207,14 +209,19 @@ public class MainContent extends JPanel {
 
         Box topPanel = Box.createHorizontalBox();
 //        topPanel.setBackground(new Color(33, 136, 255));
-        //topPanel.setBackground(new Color(36, 41, 46));
-        //topPanel.setBackground(new Color(36, 41, 46));
+//        topPanel.setBackground(new Color(36, 41, 46));
+//        topPanel.setBackground(new Color(36, 41, 46));
 //        topPanel.setBackground(new Color(20, 23, 41));
-        //topPanel.setBackground(new Color(29,32,51));
-        topPanel.setBackground(new Color(47, 51, 62));
+//        topPanel.setBackground(new Color(29,32,51));
+        topPanel.setBackground(new Color(237,237,237));
+        topPanel.setBorder(
+                new CompoundBorder(
+                        BorderFactory.createMatteBorder(0, 0, 1,0, Colors.BORDER),
+                        new EmptyBorder(10, 10, 10, 10)
+                )
+        );
         topPanel.setOpaque(true);
 
-        topPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         JButton newConnection = GraphicsUtils.createSkinnedButton(new Color(92, 167, 25), new Color(128, 167, 25), new Color(50, 167, 25));// new JButton("New connection");
         newConnection.setText("New connection");
         newConnection.setFont(FontUtils.getFontForUi());
@@ -270,7 +277,7 @@ public class MainContent extends JPanel {
         });
         topPanel.add(cmb);
 
-        Color c1 = new Color(3, 155, 229);
+        Color c1 = Colors.BLUE;
         Color c2 = new Color(2, 132, 195);
         Color c3 = new Color(70, 130, 180);
 

@@ -13,9 +13,11 @@ import ru.openitstudio.sshide.components.newsession.SessionInfo;
 import ru.openitstudio.sshide.components.sysinfo.SystemInfoPanel;
 import ru.openitstudio.sshide.components.taskmgr.TaskManager;
 import ru.openitstudio.sshide.components.terminal.TerminalHolder;
+import ru.openitstudio.sshide.components.ui.Colors;
 import ru.openitstudio.sshide.utils.FontUtils;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
@@ -23,7 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SessionContent extends JPanel {
-	private static Color bg = new Color(33, 36, 43), sg = new Color(62, 68, 81);
+	private static Color bg = Colors.BG, sg = Colors.BLUE;
 	private SessionInfo info;
 	// private JSplitPane verticalSplitter, horizontalSplitter;
 	private CardLayout mainCard;
@@ -178,7 +180,7 @@ public class SessionContent extends JPanel {
 //        bottomTabs.setTabComponentAt(1, createTab("Transfers", false, "\uf0ec"));
 
 		// add(toolBar, BorderLayout.NORTH);
-//        verticalSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+//		JSplitPane verticalSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 //        verticalSplitter.putClientProperty("Nimbus.Overrides", App.splitPaneSkin1);
 //        verticalSplitter.setBackground(Color.RED);
 //        verticalSplitter.setOpaque(false);
@@ -194,6 +196,8 @@ public class SessionContent extends JPanel {
 //        sidePanel.setMinimumSize(new Dimension(170, 200));
 //        sidePanel.setPreferredSize(new Dimension(170, 200));
 //        sidePanel.setBackground(new Color(20, 23, 41));
+
+		sidePanel.setBorder(BorderFactory.createMatteBorder(0,0,0,1, Colors.BORDER));
 
 		for (JPanel panel1 : panels) {
 			panel1.setPreferredSize(maxDim);
