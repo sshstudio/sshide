@@ -135,7 +135,7 @@ public class SessionInfoPanel extends JPanel {
 	}
 
 	private void createUI() {
-		// setBackground(new Color(245,245,245));
+		// setBackground(new Color(237, 237, 237));
 		lblHost = new JLabel(TextHolder.getString("host.name"));
 		lblHost.setHorizontalAlignment(JLabel.LEADING);
 		lblPort = new JLabel(TextHolder.getString("host.port"));
