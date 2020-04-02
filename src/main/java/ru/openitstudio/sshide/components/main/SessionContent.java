@@ -25,7 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SessionContent extends JPanel {
-	private static Color bg = Colors.BG, sg = Colors.BLUE;
+	private static Color bg = Color.WHITE, sg = Colors.SELECTION;
 	private SessionInfo info;
 	// private JSplitPane verticalSplitter, horizontalSplitter;
 	private CardLayout mainCard;
@@ -249,7 +249,7 @@ public class SessionContent extends JPanel {
 				panel1.setBackground(sg);
 				mainCard.show(mainPanel, panel.getName());
 				for (Component child : panel1.getComponents()) {
-					child.setForeground(Color.WHITE);
+					child.setForeground(Colors.FONT_COLOR);
 				}
 
 				if (panel.getName().equals(IdePanel.TERMINAL.getName())) {

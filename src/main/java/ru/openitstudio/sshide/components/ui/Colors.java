@@ -9,4 +9,7 @@ public interface Colors {
     Color BORDER  = new Color(206,206,206);
     Color BLUE = new Color(3, 155, 229);
 
+    Color SELECTION = new Color(212, 212, 212);
+    Color FONT_COLOR = new Color(29,29,29);
+
 }
