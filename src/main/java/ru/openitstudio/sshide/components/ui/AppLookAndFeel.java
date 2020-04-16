@@ -23,9 +23,6 @@ public class AppLookAndFeel {
                 File.separator +
                 App.getGlobalSettings().getTheme();
 
-        System.out.println("Set theme "+ themeFile);
-        System.out.println(App.getGlobalSettings().getTerminalType());
-
         try {
             File file = new File(themeFile);
             if (file.exists() && file.isFile()) {
@@ -39,8 +36,6 @@ public class AppLookAndFeel {
                 for (int colorsItem = 0; colorsItem < nodeList.getLength(); colorsItem++) {
 
                     Node node = nodeList.item(colorsItem);
-
-                    System.out.println("Set ui "+node.getAttributes().getNamedItem("name").getNodeValue()+" value "+node.getAttributes().getNamedItem("value").getNodeValue());
 
                     UIManager.put(
                             node.getAttributes().getNamedItem("name").getNodeValue(),

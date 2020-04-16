@@ -11,6 +11,7 @@ import ru.openitstudio.sshide.utils.SaveAndLoad;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -223,8 +224,11 @@ public class SettingsPanel extends JPanel {
         dlg.add(this);
         dlg.setModal(true);
         dlg.setSize(640, 510);
-    }
 
+        getRootPane().registerKeyboardAction(e -> {
+            dlg.dispose();
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
+    }
 
     public void showDialog(Settings settings) {
         load(settings);
