@@ -1,32 +1,41 @@
 package ru.openitstudio.sshide.components.settings;
 
-import ru.openitstudio.sshide.common.Settings;
 import ru.openitstudio.sshide.common.IdePanel;
+import ru.openitstudio.sshide.common.Settings;
+import ru.openitstudio.sshide.components.ui.JButton;
+import ru.openitstudio.sshide.components.ui.JCheckBox;
+import ru.openitstudio.sshide.components.ui.JComboBox;
+import ru.openitstudio.sshide.components.ui.JLabel;
 import ru.openitstudio.sshide.utils.SaveAndLoad;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
-
-import ru.openitstudio.sshide.components.ui.JCheckBox;
-import ru.openitstudio.sshide.components.ui.JComboBox;
-import ru.openitstudio.sshide.components.ui.JLabel;
-import ru.openitstudio.sshide.components.ui.JButton;
 
 
 public class SettingsPanel extends JPanel {
-    private JCheckBox chkConfirmBeforeDelete, chkConfirmBeforeMoveOrCopy, chkShowHiddenFilesByDefault,
-            chkPromptForSudo, chkDirectoryCache, chkShowPathBar,
-            chkConfirmBeforeTerminalClosing, chkUseDarkThemeForTerminal,
-            chkShowMessagePrompt, chkPuttyLikeCopyPaste;
-    private JComboBox<String> cmbDefaultOpenAction;
-    private JComboBox<String> cmbTermType;
-    private JComboBox<Integer> cmbNumberOfSimultaneousConnection;
-    private JComboBox<String> cmbDefaultPanel;
+    private final JCheckBox chkConfirmBeforeDelete;
+    private final JCheckBox chkConfirmBeforeMoveOrCopy;
+    private final JCheckBox chkShowHiddenFilesByDefault;
+    private final JCheckBox chkPromptForSudo;
+    private final JCheckBox chkDirectoryCache;
+    private final JCheckBox chkShowPathBar;
+    private final JCheckBox chkConfirmBeforeTerminalClosing;
+    private final JCheckBox chkUseDarkThemeForTerminal;
+    private final JCheckBox chkShowMessagePrompt;
+    private final JCheckBox chkPuttyLikeCopyPaste;
+    private final JComboBox<String> cmbDefaultOpenAction;
+    private final JComboBox<String> cmbTermType;
+    private final JComboBox<Integer> cmbNumberOfSimultaneousConnection;
+    private final JComboBox<String> cmbDefaultPanel;
     private Settings settings;
     private JDialog dlg;
-    private JFrame frame;
+    private final JFrame frame;
+
+    private final JComboBox<String> cmbDefaultTheme;
 
     public void load(Settings settings) {
         this.settings = settings;
@@ -45,6 +54,8 @@ public class SettingsPanel extends JPanel {
         cmbNumberOfSimultaneousConnection.setSelectedItem(settings.getNumberOfSimultaneousConnection());
         cmbTermType.setSelectedItem(settings.getTerminalType());
         cmbDefaultPanel.setSelectedItem(settings.getDefaultPanel());
+
+        cmbDefaultTheme.setSelectedItem(settings.getTheme());
     }
 
     public void applySettings() {
@@ -63,6 +74,30 @@ public class SettingsPanel extends JPanel {
         settings.setNumberOfSimultaneousConnection((Integer) cmbNumberOfSimultaneousConnection.getSelectedItem());
         settings.setTerminalType((String) cmbTermType.getSelectedItem());
         settings.setDefaultPanel((String) cmbDefaultPanel.getSelectedItem());
+        settings.setTheme((String) cmbDefaultTheme.getSelectedItem());
+    }
+
+    private String[] getThemesList() {
+
+        File path = new File(System.getProperty("user.home") +
+                File.separator +
+                ".sshide" +
+                File.separator +
+                "themes");
+
+        ArrayList<String> result = new ArrayList<>();
+
+        try {
+            for (final File fileEntry : path.listFiles()) {
+                if (!fileEntry.isDirectory()) {
+                    result.add(fileEntry.getName());
+                }
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        return result.toArray(new String[0]);
     }
 
     public SettingsPanel(JFrame frame) {
@@ -87,6 +122,8 @@ public class SettingsPanel extends JPanel {
         cmbTermType.setMaximumSize(new Dimension(cmbTermType.getPreferredSize().width * 2, cmbTermType.getPreferredSize().height));
         cmbDefaultPanel = new JComboBox<>(Arrays.stream(IdePanel.values()).map(it -> it.getName()).toArray(String[]::new));
         cmbDefaultPanel.setMaximumSize(new Dimension(cmbDefaultPanel.getPreferredSize().width * 2, cmbDefaultPanel.getPreferredSize().height));
+        cmbDefaultTheme = new JComboBox<>(getThemesList());
+        cmbDefaultTheme.setMaximumSize(new Dimension(cmbDefaultTheme.getPreferredSize().width * 2, cmbDefaultTheme.getPreferredSize().height));
 
 
 //        Box hb1 = Box.createHorizontalBox();
@@ -108,6 +145,10 @@ public class SettingsPanel extends JPanel {
         hb4.add(new JLabel("Default panel"));
         hb4.add(Box.createHorizontalGlue());
         hb4.add(cmbDefaultPanel);
+        Box hb5 = Box.createHorizontalBox();
+        hb5.add(new JLabel("Default theme"));
+        hb5.add(Box.createHorizontalGlue());
+        hb5.add(cmbDefaultTheme);
 
         Box vbox = Box.createVerticalBox();
         chkConfirmBeforeDelete.setAlignmentX(Box.LEFT_ALIGNMENT);
@@ -124,7 +165,7 @@ public class SettingsPanel extends JPanel {
         hb2.setAlignmentX(Box.LEFT_ALIGNMENT);
         hb3.setAlignmentX(Box.LEFT_ALIGNMENT);
         hb4.setAlignmentX(Box.LEFT_ALIGNMENT);
-
+        hb5.setAlignmentX(Box.LEFT_ALIGNMENT);
         vbox.add(chkConfirmBeforeDelete);
         vbox.add(Box.createRigidArea(new Dimension(10, 10)));
         vbox.add(chkConfirmBeforeMoveOrCopy);
@@ -150,6 +191,8 @@ public class SettingsPanel extends JPanel {
         vbox.add(hb2);
         vbox.add(Box.createRigidArea(new Dimension(10, 10)));
         vbox.add(hb3);
+        vbox.add(Box.createRigidArea(new Dimension(10, 10)));
+        vbox.add(hb5);
         vbox.add(Box.createRigidArea(new Dimension(10, 10)));
         vbox.add(hb4);
         vbox.add(Box.createRigidArea(new Dimension(10, 10)));
@@ -179,7 +222,7 @@ public class SettingsPanel extends JPanel {
         dlg.setTitle("Settings");
         dlg.add(this);
         dlg.setModal(true);
-        dlg.setSize(640, 480);
+        dlg.setSize(640, 510);
     }
 
 

@@ -10,6 +10,7 @@ import ru.openitstudio.sshide.components.common.CustomScrollBarUI;
 import ru.openitstudio.sshide.components.main.MainContent;
 import ru.openitstudio.sshide.components.menu.MenuBar;
 import ru.openitstudio.sshide.components.terminal.snippets.SnippetItem;
+import ru.openitstudio.sshide.components.ui.AppLookAndFeel;
 import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 import ru.openitstudio.sshide.utils.PathUtils;
@@ -69,11 +70,14 @@ public class App {
 //    }
 
 	public static void main(String[] args) throws UnsupportedLookAndFeelException {
+		SaveAndLoad.loadSettings();
 
 		Security.addProvider(new BouncyCastleProvider());
 		Security.addProvider(new EdDSASecurityProvider());
 
 		NimbusLookAndFeel nimbusLookAndFeel = new NimbusLookAndFeel();
+		AppLookAndFeel.apply();
+
 		GraphicsUtils.createTextFieldSkin(nimbusLookAndFeel.getDefaults());
 		GraphicsUtils.createSpinnerSkin(nimbusLookAndFeel.getDefaults());
 		GraphicsUtils.createComboBoxSkin(nimbusLookAndFeel.getDefaults());
@@ -86,8 +90,6 @@ public class App {
 				CustomScrollBarUI.class.getName());
 
 		UIManager.setLookAndFeel(nimbusLookAndFeel);
-		UIManager.put("control", Color.WHITE);
-		UIManager.put("nimbusSelectionBackground", new Color(3, 155, 229));
 
 		// UIManager.put("nimbusBase", new Color(200, 200, 200));
 //        UIManager.put("text", new Color(208, 208, 208));
@@ -330,7 +332,7 @@ public class App {
 		scrollBarSkin.put("ScrollBar:\"ScrollBar.button\".size",
 				Integer.valueOf(0));
 
-		UIManager.put("ScrollBar.width", 7);
+
 
 		//SynthScrollBarUI basic = new SynthScrollBarUI();
 //        BasicTableHeaderUI headerUI=new BasicTableHeaderUI();
@@ -392,7 +394,6 @@ public class App {
 
 		FontUtils.loadFonts();
 
-		SaveAndLoad.loadSettings();
 
 		SaveAndLoad.loadSnippets();
 
@@ -435,7 +436,6 @@ public class App {
 		f.setJMenuBar(menu);
 
 		setUIFont (new javax.swing.plaf.FontUIResource(FontUtils.getFontForUi()));
-
 
 //        testDraw();
 

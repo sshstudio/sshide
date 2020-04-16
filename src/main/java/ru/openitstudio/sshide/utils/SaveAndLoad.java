@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SaveAndLoad {
     public synchronized static void loadSettings() {
-        File file = new File(App.getConfig("app.dir"),
+        File file = new File(AppConstants.CONFIG_DIR + File.separator + ".sshide" + File.separator +
                 AppConstants.CONFIG_DB_FILE);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(
@@ -34,7 +34,7 @@ public class SaveAndLoad {
     }
 
     public synchronized static void saveSettings() {
-        File file = new File(App.getConfig("app.dir"),
+        File file = new File(AppConstants.CONFIG_DIR,
                 AppConstants.CONFIG_DB_FILE);
         ObjectMapper objectMapper = new ObjectMapper();
         try {

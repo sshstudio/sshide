@@ -1,0 +1,7 @@
+<!--Seee https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/_nimbusDefaults.html-->
+<scheme name="default" version="1">
+    <colors>
+        <color name="textForeground" value="#19191c" />
+        <color name="Button.background" value="#dddddd" />
+    </colors>
+</scheme>
