@@ -136,14 +136,14 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 
 public class MainContent extends JPanel {
     //private GradientPaint gradientPaint;
-    private JFrame frame;
+    private final JFrame frame;
     private SettingsPanel settingsPanel;
     private JComboBox<SessionInfo> cmb;
-
 
 
     public MainContent(JFrame frame) {
@@ -152,6 +152,12 @@ public class MainContent extends JPanel {
 //        gradientPaint = new GradientPaint(0.0f, 0.0f, new Color(200, 200, 200),
 //                0.0f, 50.0f, new Color(150, 150, 150));
         init();
+
+        //Ctrl +n hot key handler
+        registerKeyboardAction(e -> {
+                    SessionInfo info = new NewSessionDlg(SwingUtilities.windowForComponent(this)).newSession();
+                }, KeyStroke.getKeyStroke(KeyEvent.VK_N, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()), JComponent.WHEN_IN_FOCUSED_WINDOW
+        );
     }
 
 
@@ -180,7 +186,6 @@ public class MainContent extends JPanel {
                 g.fillRect(0, 0, width - 1, height - 1);
             }
         };
-
 
         comboBoxSkin.put("ComboBox.foreground", Color.WHITE);
         comboBoxSkin.put("ComboBox[Enabled].backgroundPainter", comboBoxPainterNormal);
@@ -213,10 +218,10 @@ public class MainContent extends JPanel {
 //        topPanel.setBackground(new Color(36, 41, 46));
 //        topPanel.setBackground(new Color(20, 23, 41));
 //        topPanel.setBackground(new Color(29,32,51));
-        topPanel.setBackground(new Color(237,237,237));
+        topPanel.setBackground(new Color(237, 237, 237));
         topPanel.setBorder(
                 new CompoundBorder(
-                        BorderFactory.createMatteBorder(0, 0, 1,0, Colors.BORDER),
+                        BorderFactory.createMatteBorder(0, 0, 1, 0, Colors.BORDER),
                         new EmptyBorder(10, 10, 10, 10)
                 )
         );
@@ -244,7 +249,7 @@ public class MainContent extends JPanel {
         cmb = new JComboBox<>(model);
         cmb.putClientProperty("Nimbus.Overrides", getSkinnedDropDown());
         cmb.setRenderer(new ListCellRenderer<SessionInfo>() {
-            JLabel lbl = new JLabel();
+            final JLabel lbl = new JLabel();
 
             {
                 setOpaque(true);
