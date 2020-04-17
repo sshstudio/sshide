@@ -46,6 +46,18 @@ public class NewSessionDlg extends JDialog implements ActionListener, TreeSelect
 		}, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
 	}
 
+
+	MouseListener treeItemDoubleClickListener = new MouseAdapter() {
+		public void mousePressed(MouseEvent e) {
+			int selRow = tree.getRowForLocation(e.getX(), e.getY());
+			if(selRow != -1) {
+				 if(e.getClickCount() == 2) {
+				 	connectClicked();
+				}
+			}
+		}
+	};
+
 	private void createUI() {
 		setBackground(new Color(245, 245, 245));
 		// setIconImage(App.getAppIcon());
@@ -81,6 +93,7 @@ public class NewSessionDlg extends JDialog implements ActionListener, TreeSelect
 		treeModel = new DefaultTreeModel(null, true);
 		treeModel.addTreeModelListener(this);
 		tree = new AutoScrollingJTree(treeModel);
+		tree.addMouseListener(treeItemDoubleClickListener);
 		tree.setDragEnabled(true);
 		tree.setDropMode(DropMode.ON_OR_INSERT);
 		tree.setTransferHandler(new TreeTransferHandler());
