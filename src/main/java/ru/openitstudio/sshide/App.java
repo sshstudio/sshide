@@ -1,7 +1,5 @@
 package ru.openitstudio.sshide;
 
-import com.apple.eawt.Application;
-
 import net.i2p.crypto.eddsa.EdDSASecurityProvider;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -11,6 +9,7 @@ import ru.openitstudio.sshide.components.main.MainContent;
 import ru.openitstudio.sshide.components.menu.MenuBar;
 import ru.openitstudio.sshide.components.terminal.snippets.SnippetItem;
 import ru.openitstudio.sshide.components.ui.AppLookAndFeel;
+import ru.openitstudio.sshide.components.ui.MacOSApplication;
 import ru.openitstudio.sshide.utils.FontUtils;
 import ru.openitstudio.sshide.utils.GraphicsUtils;
 import ru.openitstudio.sshide.utils.PathUtils;
@@ -21,6 +20,7 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.security.Security;
 import java.util.List;
 import java.util.Properties;
@@ -397,28 +397,19 @@ public class App {
 
 		SaveAndLoad.loadSnippets();
 
+		JFrame f = new JFrame("SshIde");
+		MainContent mainContent = new MainContent(f);
 
-
-		if (System.getProperty("os.name").equals("Mac OS X")) {
+		if (AppConstants.isMac) {
 			try {
-
-				System.setProperty("apple.laf.useScreenMenuBar", "true");
-				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SshIde");
-
-				Application.getApplication().setDockIconImage(
-						ImageIO.read(App.class.getResource("/logo-512.png"))
-				);
-			} catch (Exception e) {
+				MacOSApplication.initMacApplication(mainContent);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-
-
-		JFrame f = new JFrame("SshIde");
 		try {
-			f.setIconImage(
-					ImageIO.read(App.class.getResource("/logo-512.png")));
+			f.setIconImage(ImageIO.read(App.class.getResource("/logo-512.png")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -426,7 +417,7 @@ public class App {
 		f.setSize(800, 600);
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-		f.add(new MainContent(f));
+		f.add(mainContent);
 //		f.add(new MainContentWithTree(f));
 
 		f.setLocationRelativeTo(null);

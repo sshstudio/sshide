@@ -361,6 +361,10 @@ public class MainContent extends JPanel {
         setOpaque(true);
     }
 
+    public SettingsPanel getSettingsPanel() {
+        return settingsPanel;
+    }
+
 //    @Override
 //    protected void paintComponent(Graphics g) {
 //        super.paintComponent(g);
