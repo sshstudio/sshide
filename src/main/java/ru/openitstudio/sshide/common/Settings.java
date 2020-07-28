@@ -18,7 +18,7 @@ public class Settings {
             // 2 Open with internal editor
             , numberOfSimultaneousConnection = 3;
     private String terminalType = "xterm-256color";
-    private String defaultPanel = IdePanel.FILES.getName();
+    private String defaultPanel = IdePanel.TERMINAL.getName();
     private String theme = "";
 
     public boolean isConfirmBeforeDelete() {
