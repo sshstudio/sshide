@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>com.shinyhut</groupId>
 			<artifactId>vernacular</artifactId>
-			<version>1.6</version>
+			<version>1.14</version>
 		</dependency>
 
 		<dependency>
